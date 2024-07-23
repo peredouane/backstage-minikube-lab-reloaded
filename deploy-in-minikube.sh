@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Prompt the user for their GitHub token
+Prompt the user for their GitHub token
 read -p "Enter your GitHub token: " GITHUB_TOKEN
 read -p "Enter your GitHub auth cliend ID: " AUTH_GITHUB_CLIENT_ID
 read -p "Enter your GitHub auth client secret: " AUTH_GITHUB_CLIENT_SECRET
@@ -11,7 +11,7 @@ minikube start --cpus 4 --memory 4096
 # Install ArgoCD
 helm install argocd -n argocd helm-charts/infra/argo-cd --values helm-charts/infra/argo-cd/values-custom.yaml --dependency-update --create-namespace
 
-# Get ArgoCD admin password
+Get ArgoCD admin password
 until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
   echo "Waiting for secret 'argocd-initial-admin-secret' to be available..."
   sleep 3
@@ -97,7 +97,7 @@ echo "##########################################################################
 echo "#############################################################################"
 echo "#############################################################################"
 
-# We create the secret for every required env var. This way the secrets won't get pushed to Github.
+# # We create the secret for every required env var. This way the secrets won't get pushed to Github.
 kubectl create ns backstage
 kubectl create secret generic -n backstage github-token --from-literal=GITHUB_TOKEN="$GITHUB_TOKEN"
 kubectl create secret generic -n backstage auth-github-client-id --from-literal=AUTH_GITHUB_CLIENT_ID="$AUTH_GITHUB_CLIENT_ID"

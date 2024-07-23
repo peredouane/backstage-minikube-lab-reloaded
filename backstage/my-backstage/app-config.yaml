@@ -1,10 +1,10 @@
 app:
   # Should be the same as backend.baseUrl when using the `app-backend` plugin.
-  title: Automate All The Things
+  title: Automate All - Local
   baseUrl: http://localhost:3000
 
 organization:
-  name: Automate All The Things
+  name: Automate All - Local
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
